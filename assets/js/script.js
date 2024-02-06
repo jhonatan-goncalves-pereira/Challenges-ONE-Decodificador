@@ -24,7 +24,8 @@ btnCopiar.addEventListener("click", function() {
 });
 
 btnCriptografa.addEventListener("click", function() {
-    decodificador__txtLateral__Txt.innerHTML = criptografar(criptografar(txt.value));
+    decodificador__txtLateral__Txt.innerHTML = criptografar(txt.value);
+    decodificador__txtLateral__Txt.style.wordWrap = "break-word";
     btnCopiar.style.display = "block";
 });
 
@@ -34,18 +35,51 @@ btnDescriptografa.addEventListener("click", function() {
 });
 
 function criptografar(text){
-    return text.replace(/e/g, 'enter')
-                 .replace(/i/g, 'imes')
-                 .replace(/a/g, 'ai')
-                 .replace(/o/g, 'ober')
-                 .replace(/u/g, 'ufat');
+  let encryptedText = "";
+  for(let i = 0; i < text.length; i++){
+    if(text[i] === "e"){
+      encryptedText += "enter";
+    } else if(text[i] === "i"){
+      encryptedText += "imes";
+    } else if(text[i] === "a"){
+      encryptedText += "ai";
+    } else if(text[i] === "o"){
+      encryptedText += "ober";
+    } else if(text[i] === "u"){
+      encryptedText += "ufat";
+    } else {
+      encryptedText += text[i]; // Mantém caracteres não modificados
+    }
+  }
+  return encryptedText;
 }
 
 function descriptografa(text){
-    return text.replace(/enter/g, 'e')
-                 .replace(/imes/g, 'i')
-                 .replace(/ai/g, 'a')
-                 .replace(/ober/g, 'o')
-                 .replace(/ufat/g, 'u');
+  const decryptionKey = {
+    'enter': 'e',
+    'imes': 'i',
+    'ai': 'a',
+    'ober': 'o',
+    'ufat': 'u'
+};
+
+let decrypted = '';
+let i = 0;
+while (i < text.length) {
+    let found = false;
+    for (let key in decryptionKey) {
+        if (text.startsWith(key, i)) {
+            decrypted += decryptionKey[key];
+            i += key.length;
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        decrypted += text[i];
+        i++;
+    }
+}
+return decrypted;
 }
 
