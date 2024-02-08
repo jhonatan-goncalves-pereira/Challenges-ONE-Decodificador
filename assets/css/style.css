@@ -19,7 +19,9 @@ body{
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 48px */   
-    background: var(--Light-blue-light-blue-100, #F3F5FC);
+    background: linear-gradient( 
+    var(--Light-blue-light-blue-100, #F3F5FC),
+    var(--Light-blue-light-blue-100, #F3F5FC));
 }
 body a{
     text-decoration: none;
@@ -33,7 +35,7 @@ body a{
 }
 
 .decodificador__logo{
-    padding: 10px;
+    margin-top: 30px;
 }
 
 .decodificador__form{
@@ -53,7 +55,7 @@ body a{
     line-height: 150%; /* 48px */
     border: none;
     color: var(--Dark-blue-dark-blue-300, #0A3871);
-    background-color: #F3F5FC;
+    background-color: transparent;
     outline: none; /* Remove o destaque/foco */
     resize: vertical;
     width: 100%;
@@ -146,26 +148,25 @@ body a{
     padding: 5px;
     box-sizing: border-box; 
     border-radius: 10px;
-    left: 10%;
+    left: 5%;
     bottom: 0%;
     font-size: .7em;
     box-sizing: border-box;
     display: none;
-    margin: 5% auto 5% auto;
-    width: 80%;
+    margin: 10% auto 5% auto;
+    width: 90%;
     text-transform: lowercase;
 }
 .rodape{
     margin-top: 40px;
     width: 100%; /* 1.8rem */
     height: 6%;
-    background: var(--White, #FFF);
-    /* shadow */
-    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08); 
     padding: 0.1em; 
     box-sizing: border-box;
     text-align: center;
-    background-color: var(--Dark-blue-dark-blue-300, #0A3871);;
+}
+.rodape a{
+    color: #0A3871;
 }
 .rodape{
     font-size: 20px;
