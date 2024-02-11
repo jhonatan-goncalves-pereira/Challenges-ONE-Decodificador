@@ -28,29 +28,29 @@ btnFecharAlerta.addEventListener("click", () => {
   containerAlerta.classList.add("containerDisable");
 });
 
-btnCriptografa.addEventListener("click", () => {
-  const regex = /^[a-z\s]+$/;
+function processarTexto(operacao) {
+  const regex = /^[a-z\s.,!]+$/;
   const texto = txt.value.trim(); 
   if (!texto || !regex.test(texto)) {   
     mostrarAlerta();
     containerAlerta.classList.remove("containerDisable"); 
   } else {
     esconderElementos();
-    txtLateralTxt.innerHTML = criptografar(texto);
+    if (operacao === "criptografar") {
+      txtLateralTxt.innerHTML = criptografar(texto.toLowerCase());
+    } else if (operacao === "descriptografar") {
+      txtLateralTxt.innerHTML = descriptografar(texto.toLowerCase().toUpperCase());
+    }
     btnCopiar.style.display = "block";
   }
+}
+
+btnCriptografa.addEventListener("click", () => {
+  processarTexto("criptografar");
 });
 
 btnDescriptografa.addEventListener("click", () => {
-  const regex = /^[a-z\s]+$/;
-  const texto = txt.value.trim(); 
-  if (!texto || !regex.test(texto)) {   
-    mostrarAlerta(); 
-  } else {
-    esconderElementos();
-    txtLateralTxt.innerHTML = descriptografar(texto.toUpperCase());
-    btnCopiar.style.display = "block";
-  }
+  processarTexto("descriptografar");
 });
 
 function mostrarAlerta(){
