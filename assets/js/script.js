@@ -1,9 +1,11 @@
 const btnCriptografa = document.querySelector("#btn-criptografa");
 const btnDescriptografa = document.querySelector("#btn-descriptografa");
 const txt = document.querySelector("#txt-de-cript");
-const containerAlerta = document.querySelector('.container__alerta');
-const alerta = document.querySelector('.alerta-requisitos');
-const btnFecharAlerta = document.querySelector('.alerta-requisitos__fechar');
+const containerAlerta = document.querySelector('.container__janela');
+const janelaInstrucoes = document.querySelector('.janela__instrucoes__iniciais');
+const btnJanelaInstrucoesFechar = document.querySelector('.janela__instrucoes__iniciais__btnFechar')
+const alerta = document.querySelector('.janela__alerta-requisitos');
+const btnFecharAlerta = document.querySelector('.janela__alerta-requisitos__fechar');
 const txtLateralImg = document.querySelector('.decodificador__txtLateral__img');
 const txtLateralTitulo = document.querySelector('.decodificador__txtLateral__Titulo');
 const txtLateralTxt = document.querySelector('.decodificador__txtLateral__Txt');
@@ -13,6 +15,12 @@ const btnCopiar = document.querySelector('.decodificador__txtLateral__btnCopiar'
 containerAlerta.addEventListener("click", () => {
   containerAlerta.classList.add("containerDisable");
   alerta.classList.remove('mostrando');
+  janelaInstrucoes.classList.add("fecharJanelaInstrucoes");
+});
+
+btnJanelaInstrucoesFechar.addEventListener("click", () => {
+  containerAlerta.classList.add("containerDisable");
+  janelaInstrucoes.classList.add("fecharJanelaInstrucoes");
 });
 
 btnFecharAlerta.addEventListener("click", () => {
@@ -21,7 +29,7 @@ btnFecharAlerta.addEventListener("click", () => {
 });
 
 btnCriptografa.addEventListener("click", () => {
-  const regex = /^[A-Z\s]+$/;
+  const regex = /^[a-z\s]+$/;
   const texto = txt.value.trim(); 
   if (!texto || !regex.test(texto)) {   
     mostrarAlerta();
@@ -34,7 +42,7 @@ btnCriptografa.addEventListener("click", () => {
 });
 
 btnDescriptografa.addEventListener("click", () => {
-  const regex = /^[A-Z\s]+$/;
+  const regex = /^[a-z\s]+$/;
   const texto = txt.value.trim(); 
   if (!texto || !regex.test(texto)) {   
     mostrarAlerta(); 
@@ -58,27 +66,28 @@ function esconderElementos() {
 
 function criptografar(text){
   const encryptionKey = {
-    'E': 'enter',
-    'I': 'imes',
-    'A': 'ai',
-    'O': 'ober',
-    'U': 'ufat'
+    'e': 'enter',
+    'i': 'imes',
+    'a': 'ai',
+    'o': 'ober',
+    'u': 'ufat'
   };
 
-  return text.split('').map(char => encryptionKey[char] || char).join('').toUpperCase();
+  return text.split('').map(char => encryptionKey[char] || char).join('').toLowerCase();
 }
 
 function descriptografar(text) {
   const decryptionKey = {
-    'ENTER': 'E',
-    'IMES': 'I',
-    'AI': 'A',
-    'OBER': 'O',
-    'UFAT': 'U'
+    'enter': 'e',
+    'imes': 'i',
+    'ai': 'a',
+    'ober': 'o',
+    'ufat': 'u'
   };
 
   let decrypted = '';
   let i = 0;
+  text = text.toLowerCase(); // Converter texto para minúsculas para garantir correspondência
   while (i < text.length) {
     let found = false;
     for (let key in decryptionKey) {
@@ -94,7 +103,7 @@ function descriptografar(text) {
       i++;
     }
   }
-  return decrypted.toUpperCase();
+  return decrypted;
 }
 
 
