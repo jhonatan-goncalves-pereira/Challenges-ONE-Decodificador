@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 :root {
     --cor-primaria: #0A3871;
     --cor-secundaria: #E5E5E5;
@@ -15,7 +17,6 @@
     box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 html, body {
     height: 100%;
@@ -284,6 +285,9 @@ header h3{
     font-size: 12px;
     border-radius: 10px;
     display: none;
+    width: 90%;
+    position: relative;
+    left: 5%;
     line-height: 25px;
     margin-bottom: 30px;
     align-items: center; 
@@ -298,12 +302,12 @@ header h3{
     box-sizing: border-box; 
     border-radius: 10px;
     left: 5%;
-    bottom: 1%;
+    bottom: 8%;
     font-size: 1em;
     box-sizing: border-box;
     display: none;  
     width: 90%;
-    text-transform: lowercase;
+    text-transform: capitalize;
 }
 .rodape{
     background: linear-gradient(to left, var(--cor-primaria), var(--cor-tercearia));
@@ -318,8 +322,7 @@ header h3{
     line-height: normal;
 }
 .rodape img{
-    width: 15%;
-    height: auto;
+    width: 20%;
     margin: -30px auto;
 }
 .rodape aside{
@@ -409,7 +412,7 @@ header h3{
         margin-bottom: 50px;
     }
     .decodificador__txtLateral__btnCopiar{
-        bottom: 10px;
+        bottom: 20px;
     }
     .decodificador__txtLateral__img{
         display: none;
